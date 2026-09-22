@@ -1,1 +1,575 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Тест: какой путь к профессии помогающего практика в Германии твой</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF1EE; --paper:#F8FAF8; --ink:#1B2233; --muted:#5E6675; --line:#C9D2CC;
+  --accent:#3B3FB6; --accent-soft:rgba(59,63,182,.10); --gold:#F2C230;
+  --ok:#2E7D4F; --bright:#D6246E; --warn:#B7791F; --no:#B4452F;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#141A24; --paper:#1C2330; --ink:#E8ECEF; --muted:#9AA3B2; --line:#323B4B;
+    --accent:#8C90FF; --accent-soft:rgba(140,144,255,.14); --bright:#FF6FA8; --ok:#6FCF97; --warn:#F2B25C; --no:#F0876F;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141A24; --paper:#1C2330; --ink:#E8ECEF; --muted:#9AA3B2; --line:#323B4B;
+  --accent:#8C90FF; --accent-soft:rgba(140,144,255,.14); --bright:#FF6FA8; --ok:#6FCF97; --warn:#F2B25C; --no:#F0876F;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16.5px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto;padding:28px 20px 56px}
+.narrow{max-width:720px}
+h1,h2{font-family:"Unbounded","Golos Text",system-ui,sans-serif;letter-spacing:-.01em;line-height:1.15;margin:0}
+h1{font-size:clamp(27px,5.4vw,42px);font-weight:700}
+h2{font-size:clamp(19px,3.6vw,25px);font-weight:500}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.muted{color:var(--muted)}
+.hidden{display:none!important}
 
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:15px 28px;background:var(--ink);color:var(--paper);font-weight:600;font-size:17px;text-decoration:none}
+.btn.big{background:var(--accent);color:#fff;padding:19px 30px;font-size:18px;width:100%;max-width:520px;text-align:center}
+.link{background:none;border:0;padding:8px 0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:15px}
+
+/* intro */
+.intro .lead{margin:16px 0 30px;font-size:18px;max-width:60ch}
+.intro ul{margin:0 0 30px;padding:0;list-style:none;border-top:1.5px solid var(--ink)}
+.intro li{padding:13px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:170px 1fr;gap:14px}
+.intro li b{font-family:"Unbounded",sans-serif;font-weight:500;font-size:15px}
+.intro li span{color:var(--muted);font-size:15.5px}
+@media(max-width:520px){.intro li{grid-template-columns:1fr;gap:2px}}
+
+/* question */
+.qbox{max-width:720px;margin-bottom:26px}
+.progress{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:14px}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .4s}
+.step{font-size:14px;color:var(--muted);margin-bottom:8px}
+.hint{color:var(--muted);font-size:15px;margin-top:8px}
+.opts{display:grid;gap:9px;margin-top:18px}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:13px 16px;font-size:16.5px;font-weight:500;transition:border-color .2s,background .2s}
+.opt:hover{border-color:var(--ink)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.back{margin-top:10px}
+
+/* dashboard */
+.dash-title{font-size:14px;color:var(--muted);margin:0 0 10px}
+.dash{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media(max-width:1100px){.dash{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.dash{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.dash{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:14px 14px 10px}
+.card.best{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}
+.card header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px}
+.card header b{font-family:"Unbounded",sans-serif;font-size:15px;font-weight:700}
+.chip{font-size:12.5px;font-weight:600;border-radius:99px;padding:3px 9px;white-space:nowrap}
+.chip.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.chip.warn{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.chip.no{background:color-mix(in srgb,var(--no) 16%,transparent);color:var(--no)}
+.chip.wait{background:var(--line);color:var(--muted)}
+.row{border-top:1px solid var(--line);padding:8px 0}
+.row small{display:block;font-size:12.5px;color:var(--muted);margin-bottom:2px}
+.row .v{font-size:14.5px}
+.row .pending{font-size:13.5px;color:var(--muted);font-style:italic}
+.row ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.row li{font-size:14px;padding-left:20px;position:relative;line-height:1.4}
+.row li::before{position:absolute;left:0;top:0;font-weight:700}
+.row li.ok::before{content:"✓";color:var(--ok)}
+.row li.warn::before{content:"!";color:var(--warn);left:4px}
+.row li.no::before{content:"✕";color:var(--no)}
+.row li.info::before{content:"i";color:var(--accent);left:4px;font-style:italic}
+.card.drnk{border-color:var(--accent)}
+.brand{color:var(--bright);font-family:"Unbounded",sans-serif;font-weight:700}
+.sub{display:block;font-size:12.5px;font-weight:600;color:var(--ink);margin-top:2px}
+.req table{min-width:1100px}
+.req td:first-child{width:150px}
+.req td:nth-child(2){width:170px}
+.req-title{margin:34px 0 0}
+.spot{margin:0 0 28px;padding:24px 22px;border-radius:16px;background:var(--accent-soft);border:1.5px solid var(--accent);max-width:720px}
+.spot h2{margin-bottom:12px}
+.spot ul{margin:12px 0;padding-left:20px;display:grid;gap:8px}
+.spot .fine{font-size:14px;color:var(--muted);margin-top:10px}
+.flash{animation:flash 1.1s ease}
+@keyframes flash{0%{background:var(--accent-soft)}100%{background:transparent}}
+
+/* result */
+.result h1{margin:8px 0 14px}
+.result .lead{font-size:18px;max-width:62ch}
+.tablewrap{overflow-x:auto;margin:26px 0;border:1.5px solid var(--ink);border-radius:14px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:940px;font-size:14.5px}
+th,td{padding:11px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+thead th{font-family:"Unbounded",sans-serif;font-weight:500;font-size:13.5px;background:var(--bg)}
+thead th.a{background:var(--gold);color:#1B2233}
+td:first-child{font-weight:600;width:170px}
+td.win{background:var(--accent-soft);font-weight:600}
+td.win::after{content:" ★";color:var(--accent)}
+.money{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 26px}
+@media(max-width:620px){.money{grid-template-columns:1fr}}
+.money div{padding:18px;border-radius:14px;background:var(--paper);border:1.5px solid var(--line)}
+.money div.plus{border-color:var(--ok)}
+.money b{display:block;font-family:"Unbounded",sans-serif;font-size:24px;margin:4px 0}
+.todo{margin:0 0 28px;max-width:720px}
+.todo h2{margin-bottom:12px}
+.todo ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.cta-box{padding:26px 22px;border:1.5px solid var(--ink);border-radius:16px;background:var(--paper);max-width:720px}
+.cta-box p{margin-bottom:16px}
+.sources{margin-top:30px;font-size:13px;color:var(--muted);max-width:720px}
+.sources a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<section id="intro" class="intro">
+  <h1>Какой путь к профессии помогающего практика в Германии подходит именно тебе?</h1>
+  <p class="lead" style="max-width:62ch">Психолог, социальный работник, консультант, коуч: к работе с людьми в Германии ведут разные дороги. У каждой свои требования, цена и сроки. Ответь на 9 вопросов о себе, и после каждого ответа ты увидишь, как меняется картина по всем пяти путям.</p>
+  <p class="muted" style="margin:-14px 0 28px;max-width:60ch">Тест для тех, кто уже живёт в Германии и имеет право здесь работать, например, с защитным статусом по §24.</p>
+  <h2 style="margin-bottom:12px">Пять путей и их требования</h2>
+  <div class="tablewrap req"><table id="reqIntro"></table></div>
+  <button class="btn" id="start">Начать тест</button>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="qbox">
+    <div class="progress"><i id="bar"></i></div>
+    <div class="step" id="step"></div>
+    <h2 id="qtext"></h2>
+    <p class="hint" id="qhint"></p>
+    <div class="opts" id="opts"></div>
+    <button class="link back hidden" id="back">Назад</button>
+  </div>
+  <p class="dash-title">Твоя картина по четырём путям обновляется после каждого ответа</p>
+  <div class="dash" id="dash"></div>
+</section>
+
+<section id="result" class="result hidden">
+  <p class="muted">Итог по твоим ответам</p>
+  <h1 id="rTitle"></h1>
+  <p class="lead" id="rLead"></p>
+  <div class="tablewrap"><table id="rTable"></table></div>
+  <h2 class="req-title">Требования к каждому пути</h2>
+  <div class="tablewrap req"><table id="reqResult"></table></div>
+  <div class="money" id="rMoney"></div>
+  <div class="spot hidden" id="rSpot"></div>
+  <div class="todo" id="rTodo"></div>
+  <div class="cta-box">
+    <p>Разберём твою ситуацию лично: профессию, регион, сроки и шаги к договору.</p>
+    <a class="btn big" id="cta" href="#diagnostika">Диагностика: что подойдет именно тебе</a>
+  </div>
+  <button class="link" id="again" style="margin-top:14px">Пройти тест заново</button>
+  <div class="sources">
+    Цифры: минимальная и средняя тарифная Ausbildungsvergütung (<a href="https://www.bibb.de/mindestausbildungsverguetung" target="_blank" rel="noopener">BIBB</a>, 2026 и 2025), медианные зарплаты при полной занятости за 2024 год (<a href="https://www.arbeitsagentur.de/presse/2025-32-entgelte-der-vollzeitbeschaeftigten-sind-im-jahr-2024-deutlich-gestiegen" target="_blank" rel="noopener">Bundesagentur für Arbeit</a>), Aufstiegs-BAföG (IHK). Суммы брутто. Тест даёт ориентир, итоговое решение зависит от профессии, региона и твоих документов.
+  </div>
+</section>
+
+</main>
+
+<script>
+var DIAGNOSTIC_URL = "#diagnostika"; /* вставьте ссылку на диагностику */
+
+var MIN_AZUBI = 724, AVG_AZUBI = 1209, SAL_BERUF = 3870, SAL_UNI = 5916, SAL_NONE = 2987, LIVING = 992;
+
+var PATHS = [
+  {id:"A", name:"Ausbildung"},
+  {id:"U", name:"Университет"},
+  {id:"W", name:"Weiterbildung"},
+  {id:"S", name:"Schulung"},
+  {id:"D", name:"Онлайн-Ausbildung", org:"Академия System Consulting", sub:"Академия System Consulting. ДРНК «Денежные расстановки на картах»"}
+];
+
+var Q = [
+  {id:"jc", t:"Ты стоишь на учёте в Jobcenter или Agentur für Arbeit?", h:"От этого зависит, может ли государство оплатить твоё обучение.",
+   o:[["yes","Да"],["no","Нет"]]},
+  {id:"age", t:"Сколько тебе лет?", h:"Возраст влияет на варианты господдержки.",
+   o:[["u25","До 25"],["25","25–35"],["36","36–45"],["46","46 и старше"]]},
+  {id:"dir", t:"Кем ты хочешь работать с людьми?", h:"В помогающих профессиях разные роли требуют разного пути.",
+   o:[["coach","Консультант, коуч, помогающий практик"],["psych","Психолог"],["social","Социальный работник"],["care","Уход, воспитание, работа с детьми"],["unsure","Пока не знаю, хочу попробовать"]]},
+  {id:"school", t:"Какой у тебя школьный аттестат?", h:"Для университета это ключевой документ.",
+   o:[["abitur","Abitur или аттестат, который даёт право поступать в вуз Германии"],["11","Аттестат 11 классов из стран СНГ"],["9","9 классов"],["unknown","Не знаю, как его оценят в Германии"]]},
+  {id:"german", t:"Какой у тебя уровень немецкого?", h:"Язык определяет, какие пути открыты уже сейчас.",
+   o:[["A","A1–A2"],["B1","B1"],["B2","B2"],["C","C1 и выше"]]},
+  {id:"prof", t:"Есть ли у тебя профессия?", h:"Для Weiterbildung это главное условие.",
+   o:[["none","Нет"],["foreign","Есть диплом из другой страны"],["de","Есть немецкая профессия (Berufsabschluss)"]]},
+  {id:"money", t:"Сколько денег ты готов вложить в учёбу и жизнь на старте?", h:"Считаем всё: курсы, взносы и жизнь, пока нет зарплаты.",
+   o:[["0","Почти ничего"],["5","До 5 000 €"],["10","5 000–12 000 €"],["15","Больше 12 000 €"]]},
+  {id:"speed", t:"Когда тебе нужен доход?", h:"Здесь пути расходятся сильнее всего.",
+   o:[["now","С первого месяца"],["year","Через год"],["wait","Могу 3–4 года жить без зарплаты"]]},
+  {id:"goal", t:"Что для тебя главное через пять лет?", h:"Последний вопрос. Потом покажем итоговое сравнение.",
+   o:[["stable","Стабильная профессия, которую признают по всей Германии"],["max","Максимальная зарплата, даже если путь длиннее"],["lead","Своя частная практика"],["fast","Как можно быстрее выйти на работу"]]}
+];
+
+/* Данные Академии: заполните, когда будут подтверждены */
+var DRNK_LANG = "Можно с нулевым немецким. Обучение на русском, при необходимости с куратором на украинском";
+var DRNK_AGE  = "Без ограничения, обычно после школы";
+var DRNK_HOME = "уточняется";
+
+var REQ_COLS = ["Путь","Программа","Уровень языка","Возраст","Предварительное образование","Можно ли онлайн","Часов вне дома","Часов дома"];
+var REQS = {
+  A:{prog:"Дуальная профессия с экзаменом IHK или HWK",
+     lang:"B2. Ниже этого уровня место в компании почти не найти и Berufsschule не осилить",
+     age:"Без ограничения",
+     edu:"Законом не требуется. Работодатели часто смотрят на школьный аттестат",
+     online:"Нет. Отдельные части обучения могут идти дистанционно",
+     out:"Полный рабочий день в компании и Berufsschule, обычно 35–40 часов в неделю. Есть вариант Teilzeitausbildung",
+     home:"Отдельно не нормируется: подготовка к Berufsschule и экзаменам в свободное время"},
+  U:{prog:"Bachelor, затем Master",
+     lang:"C1 для программ на немецком (DSH-2 или TestDaF). Для англоязычных программ английский B2–C1",
+     age:"Без ограничения",
+     edu:"Право на поступление: Abitur или признанный аттестат, для стран СНГ часто Studienkolleg. Второй путь: профессия и 3 года работы",
+     online:"В обычных вузах в основном очно. Есть дистанционные вузы, например FernUniversität in Hagen",
+     out:"Зависит от программы: лекции, семинары, практикумы, экзамены",
+     home:"Общая нагрузка 750–900 часов за семестр (30 ECTS). Всё, что вне аудитории, самостоятельная работа"},
+  W:{prog:"Meister, Fachwirt и другие ступени Aufstiegsfortbildung",
+     lang:"Формально не задан. Экзамены на немецком, на практике нужен B2",
+     age:"Без ограничения, Aufstiegs-BAföG тоже без возрастной границы",
+     edu:"Признанная профессия и опыт работы. Для Meister обычно Gesellenprüfung",
+     online:"Да, есть дистанционные курсы. Экзамен сдаётся очно",
+     out:"Очный курс с Aufstiegs-BAföG: от 25 учебных часов в неделю. Параллельно с работой меньше, зависит от курса",
+     home:"При дистанционном формате большая часть обучения. Для Aufstiegs-BAföG курс должен длиться от 400 учебных часов"},
+  S:{prog:"Курсы и тренинги по отдельным навыкам",
+     lang:"Зависит от курса, многие идут на немецком",
+     age:"Без ограничения",
+     edu:"Обычно не нужно",
+     online:"Часто да",
+     out:"Зависит от курса",
+     home:"Зависит от курса"},
+  D:{prog:"ДРНК «Денежные расстановки на картах». 1 год, курс допущен ZFU",
+     lang:DRNK_LANG,
+     age:DRNK_AGE,
+     edu:"Диплом психолога и опыт консультирования не нужны",
+     online:"Да, обучение онлайн",
+     out:"0 часов: всё обучение онлайн",
+     home:DRNK_HOME}
+};
+function pathName(p){
+  return p.id === "D" ? '<span class="brand">' + p.name + '</span>' : '<b>' + p.name + '</b>';
+}
+function reqTableHTML(){
+  var order = ["D","A","U","W","S"];
+  var head = '<thead><tr>' + REQ_COLS.map(function(c){ return '<th>' + c + '</th>'; }).join("") + '</tr></thead>';
+  var body = '<tbody>' + order.map(function(id){
+    var p = PATHS.filter(function(x){ return x.id === id; })[0], q = REQS[id];
+    var prog = id === "D" ? '<span class="brand">' + q.prog + '</span>' : q.prog;
+    return '<tr><td>' + pathName(p) + (p.org ? '<span class="sub">' + p.org + '</span>' : '') + '</td><td>' + prog + '</td><td>' + q.lang + '</td><td>' + q.age + '</td><td>' + q.edu + '</td><td>' + q.online + '</td><td>' + q.out + '</td><td>' + q.home + '</td></tr>';
+  }).join("") + '</tbody>';
+  return head + body;
+}
+
+var a = {}, qi = 0, prevHTML = {};
+
+function yrs(n){
+  var s = String(n).replace(".", ",");
+  if (n % 1) return s + " года";
+  if (n === 1) return "1 год";
+  if (n >= 2 && n <= 4) return s + " года";
+  return s + " лет";
+}
+function eur(n){ return n.toLocaleString("de-DE") + " €"; }
+function statusOf(req){
+  if (req.some(function(r){return r.k==="no"})) return "no";
+  if (req.some(function(r){return r.k==="warn"})) return "warn";
+  if (req.some(function(r){return r.k==="ok"||r.k==="info"})) return "ok";
+  return "wait";
+}
+
+function evaluate(){
+  var R = {};
+
+  /* Ausbildung */
+  var r = [], prep = 0;
+  if (a.jc) r.push({k:"ok",t:"Можно сразу искать место в компании"});
+  if (a.age) r.push({k:"ok",t:"Верхней границы возраста в законе нет"});
+  if (a.dir === "care") r.push({k:"ok",t:"Например, Pflegefachkraft: профессия в уходе с оплатой во время учёбы"});
+  else if (a.dir === "psych") r.push({k:"warn",t:"Психологом через Ausbildung стать нельзя, для этого нужен вуз"});
+  else if (a.dir === "coach") r.push({k:"info",t:"Отдельной Ausbildung для консультантов и коучей нет"});
+  if (a.school) r.push({k:"ok",t:"Определённый аттестат законом не требуется, решает работодатель"});
+  if (a.german === "A"){ r.push({k:"no",t:"Для Ausbildung на практике нужен немецкий B2. С уровнем A1–A2 путь закрыт: сначала 1,5–2 года курсов"}); prep = 2; }
+  else if (a.german === "B1"){ r.push({k:"no",t:"Для Ausbildung на практике нужен немецкий B2. С B1 путь пока закрыт: сначала ещё около года курсов"}); prep = 1; }
+  else if (a.german) r.push({k:"ok",t:"Твоего немецкого хватает для Ausbildung"});
+  if (a.prof === "foreign" || a.prof === "de") r.push({k:"ok",t:"С опытом или дипломом срок обучения можно сократить"});
+  if (a.jc === "yes" && a.age && a.age !== "u25") r.push({k:"ok",t:"Спроси своего консультанта про Umschulung: сокращённую Ausbildung с оплатой от государства"});
+  R.A = {req:r, prep:prep, dur:3,
+    cost:"0 € за обучение. Тебе платят: минимум " + eur(MIN_AZUBI) + " в месяц в первый год, в среднем по тарифам " + eur(AVG_AZUBI) + ".",
+    costShort:"0 €, тебе платят",
+    income:"от " + eur(MIN_AZUBI) + ", в среднем " + eur(AVG_AZUBI) + " в месяц",
+    practice: prep ? "После курса немецкого, затем с первого месяца в компании" : "С первого месяца в компании",
+    practiceShort: prep ? "через ~1 год, сразу в компании" : "с 1-го месяца",
+    cert:"Через " + yrs(prep + 3) + " (сама Ausbildung 2–3,5 года)",
+    certShort: yrs(prep + 3),
+    after:"Медиана с признанной профессией: " + eur(SAL_BERUF) + " в месяц",
+    afterShort: eur(SAL_BERUF),
+    recognized:"да, экзамен IHK или HWK"};
+
+  /* Университет */
+  r = []; prep = 0;
+  if (a.school === "abitur") r.push({k:"ok",t:"Право на поступление есть"});
+  else if (a.school === "11"){ r.push({k:"warn",t:"Для аттестата из стран СНГ обычно нужен Studienkolleg (около года) или 1–2 курса вуза на родине"}); prep += 1; }
+  else if (a.school === "9") r.push({k:"no",t:"Без права на поступление вуз закрыт. Обходной путь: Ausbildung и 3 года работы по профессии"});
+  else if (a.school === "unknown"){ r.push({k:"warn",t:"Аттестат нужно проверить в базе anabin, часто требуется Studienkolleg"}); prep += 1; }
+  if (a.german === "A"){ r.push({k:"warn",t:"Для программ на немецком нужен C1: это примерно 2 года курсов"}); prep += 2; }
+  else if (a.german === "B1" || a.german === "B2"){ r.push({k:"warn",t:"Для программ на немецком нужен C1: ещё около года языка"}); prep += 1; }
+  else if (a.german === "C") r.push({k:"ok",t:"Уровень языка подходит"});
+  if (a.dir === "psych") r.push({k:"ok",t:"Психолог в Германии: Bachelor и Master Psychologie. Для психотерапии нужна ещё Approbation"});
+  else if (a.dir === "social") r.push({k:"ok",t:"Социальный работник: Bachelor Soziale Arbeit"});
+  else if (a.dir === "coach") r.push({k:"info",t:"Для работы консультантом или коучем вуз не обязателен"});
+  if (a.money === "0" || a.money === "5") r.push({k:"warn",t:"Жить во время учёбы придётся на BAföG, подработку или сбережения"});
+  if (a.speed === "now" || a.speed === "year") r.push({k:"warn",t:"Около " + yrs(prep + 3.5) + " без полноценной зарплаты"});
+  else if (a.speed === "wait") r.push({k:"ok",t:"Ты готов прожить годы учёбы без зарплаты"});
+  R.U = {req:r, prep:prep, dur:3.5,
+    cost:"В государственных вузах платишь только семестровый взнос, обычно несколько сотен евро. Жизнь за свой счёт: официальный ориентир для студентов " + eur(LIVING) + " в месяц.",
+    costShort:"жизнь ≈ " + eur(LIVING) + "/мес за свой счёт",
+    income:"нет, только подработка или BAföG",
+    practice:"Стажировки во время учёбы. Полноценная работа через " + yrs(prep + 3.5),
+    practiceShort:"через " + yrs(prep + 3.5),
+    cert:"Bachelor через " + yrs(prep + 3.5),
+    certShort: yrs(prep + 3.5),
+    after:"Медиана у выпускников вузов: " + eur(SAL_UNI) + " в месяц",
+    afterShort: eur(SAL_UNI),
+    recognized:"да, Bachelor"};
+
+  /* Weiterbildung */
+  r = [];
+  if (!a.prof && a.jc) r.push({k:"wait",t:"Главное условие впереди: вопрос о профессии"});
+  if (a.prof === "none") r.push({k:"no",t:"Для Meister или Fachwirt сначала нужна профессия. Чаще всего это и есть Ausbildung"});
+  else if (a.prof === "foreign") r.push({k:"warn",t:"Сначала признание диплома (Anerkennung), потом подготовка к экзамену"});
+  else if (a.prof === "de") r.push({k:"ok",t:"Профессия есть, можно расти дальше"});
+  if (a.german === "A" || a.german === "B1") r.push({k:"no",t:"Экзамены идут на немецком, на практике нужен уверенный B2"});
+  var wBlocked = a.prof === "none";
+  R.W = {req:r, prep:0, dur:1,
+    cost:"Курсы Meister или Fachwirt стоят тысячи евро. Aufstiegs-BAföG может покрыть до 75% стоимости курса и экзамена.",
+    costShort: wBlocked ? "закрыто без профессии" : "тысячи €, до 75% покрывает Aufstiegs-BAföG",
+    income: wBlocked ? "закрыто без профессии" : "зарплата, если учишься параллельно с работой",
+    practice: wBlocked ? "Сначала нужна профессия" : "Ты уже работаешь по профессии",
+    practiceShort: wBlocked ? "закрыто" : "уже работаешь",
+    cert: wBlocked ? "Сначала профессия, потом ещё 1–3 года" : "Обычно около года очно или 2–3 года параллельно с работой",
+    certShort: wBlocked ? "после профессии" : "1–3 года",
+    after:"Уровень DQR 6, как у бакалавра. Зарплата зависит от отрасли",
+    afterShort:"зависит от отрасли",
+    recognized: wBlocked ? "закрыто без профессии" : "да, Meister или Fachwirt"};
+
+  /* Schulung */
+  r = [];
+  if (a.jc) r.push({k:"ok",t:"Начать можно хоть на следующей неделе"});
+  if (a.jc === "yes") r.push({k:"ok",t:"Курс может оплатить Jobcenter или Agentur für Arbeit через Bildungsgutschein"});
+  else if (a.jc === "no") r.push({k:"warn",t:"Курс, скорее всего, оплачиваешь сам"});
+  if (a.german === "A") r.push({k:"warn",t:"Многие курсы идут только на немецком"});
+  else if (a.german) r.push({k:"ok",t:"Языка хватит для большинства курсов"});
+  if (a.jc) r.push({k:"warn",t:"Сертификат подтверждает навык. Профессией он не считается"});
+  R.S = {req:r, prep:0, dur:0.25,
+    cost:"От нескольких сотен до нескольких тысяч евро. С Bildungsgutschein от Agentur für Arbeit или Jobcenter бесплатно, если курс сертифицирован по AZAV.",
+    costShort: a.jc === "yes" ? "возможно бесплатно по Bildungsgutschein" : "сотни–тысячи €",
+    income:"нет",
+    practice:"Сразу после курса, чаще на позиции помощника",
+    practiceShort:"после курса, чаще помощником",
+    cert:"От нескольких дней до нескольких месяцев",
+    certShort:"дни–месяцы",
+    after:"Медиана без признанной профессии: " + eur(SAL_NONE) + " в месяц",
+    afterShort: eur(SAL_NONE),
+    recognized:"нет, подтверждение навыка"};
+
+  /* Академия System Consulting: ДРНК */
+  r = [];
+  if (a.jc) r.push({k:"ok",t:"Учёба онлайн, из любого города"});
+  if (a.jc) r.push({k:"ok",t:"Немецкий не нужен: обучение на русском, при необходимости куратор на украинском"});
+  if (a.dir === "coach" || a.dir === "unsure") r.push({k:"ok",t:"Направление совпадает: консультирование и помогающая практика"});
+  else if (a.dir === "psych") r.push({k:"info",t:"Даёт практику консультирования за 1 год. Звание психолога в Германии получают через университет"});
+  else if (a.dir === "social") r.push({k:"info",t:"Добавляет инструменты консультирования. Для должности социального работника нужен Bachelor Soziale Arbeit"});
+  else if (a.dir === "care") r.push({k:"warn",t:"Для ухода и работы с детьми нужна отдельная профессия"});
+  if (a.prof) r.push({k:"ok",t:"Диплом психолога и опыт консультирования не нужны"});
+  if (a.jc) r.push({k:"ok",t:"Курс допущен ZFU (Zentralstelle für Fernunterricht)"});
+  if (a.dir) r.push({k:"info",t:"Практика в формате консультирования. Лечение психических расстройств в Германии требует отдельного разрешения"});
+  R.D = {req:r, prep:0, dur:1,
+    cost:"Оплата частями от 250 € в месяц.",
+    costShort:"частями от 250 €/мес",
+    income:"по мере практики: 70% получают первых платных клиентов к 8-му модулю",
+    practice:"Во время обучения: 40% студентов начинают практиковать до окончания курса",
+    practiceShort:"во время курса",
+    cert:"Через 1 год",
+    certShort:"1 год",
+    after:"Доход зависит от твоей практики. 17% студентов окупают обучение ещё до конца программы",
+    afterShort:"зависит от практики",
+    recognized:"сертификат Академии System Consulting, курс допущен ZFU"};
+
+  PATHS.forEach(function(p){ R[p.id].status = statusOf(R[p.id].req); });
+  return R;
+}
+
+var STATUS_TXT = {ok:"подходишь", warn:"есть условия", no:"пока закрыто", wait:"ждём ответы"};
+
+function rowHTML(label, shown, value, qn){
+  return '<div class="row"><small>' + label + '</small>' + (shown ? '<div class="v">' + value + '</div>' : '<div class="pending">откроется после вопроса ' + qn + '</div>') + '</div>';
+}
+
+function renderDash(){
+  var R = evaluate();
+  var best = null, bestScore = 99;
+  var rank = {ok:0, warn:1, no:5, wait:9};
+  PATHS.forEach(function(p){
+    var s = rank[R[p.id].status] + R[p.id].prep + (p.id === "S" ? 0.5 : 0);
+    if (s < bestScore){ bestScore = s; best = p.id; }
+  });
+  var html = PATHS.map(function(p){
+    var d = R[p.id];
+    var req = d.req.length ? '<ul>' + d.req.map(function(x){ return '<li class="' + x.k + '">' + x.t + '</li>'; }).join("") + '</ul>' : '<div class="pending">откроется после вопроса 1</div>';
+    var body =
+      '<div class="row"><small>Требования</small>' + req + '</div>' +
+      rowHTML("Сертификат через", a.prof !== undefined, d.cert, 6) +
+      rowHTML("Стоимость для тебя", a.money !== undefined, d.cost, 7) +
+      rowHTML("Когда начнёшь практиковать", a.speed !== undefined, d.practice, 8) +
+      rowHTML("Зарплата после", a.goal !== undefined, d.after, 9);
+    return {id:p.id, html:'<article class="card' + (a.jc && best === p.id ? ' best' : '') + (p.id === "D" && (a.dir === "coach" || a.dir === "unsure") ? ' drnk' : '') + '"><header><div>' + pathName(p) + (p.sub ? '<span class="sub">' + p.sub + '</span>' : '') + '</div><span class="chip ' + d.status + '">' + STATUS_TXT[d.status] + '</span></header>' + body + '</article>'};
+  });
+  var dash = document.getElementById("dash");
+  dash.innerHTML = html.map(function(h){ return h.html; }).join("");
+  var cards = dash.querySelectorAll(".card");
+  html.forEach(function(h, k){
+    if (prevHTML[h.id] && prevHTML[h.id] !== h.html) cards[k].classList.add("flash");
+    prevHTML[h.id] = h.html;
+  });
+}
+
+function renderQ(){
+  var q = Q[qi];
+  document.getElementById("bar").style.width = (qi / Q.length * 100) + "%";
+  document.getElementById("step").textContent = "Вопрос " + (qi + 1) + " из " + Q.length;
+  document.getElementById("qtext").textContent = q.t;
+  document.getElementById("qhint").textContent = q.h;
+  var box = document.getElementById("opts");
+  box.innerHTML = "";
+  q.o.forEach(function(o){
+    var b = document.createElement("button");
+    b.className = "opt" + (a[q.id] === o[0] ? " sel" : "");
+    b.textContent = o[1];
+    b.addEventListener("click", function(){ choose(q.id, o[0]); });
+    box.appendChild(b);
+  });
+  document.getElementById("back").classList.toggle("hidden", qi === 0);
+  renderDash();
+}
+
+function choose(id, v){
+  a[id] = v;
+  if (qi < Q.length - 1){ qi++; renderQ(); window.scrollTo({top:0, behavior:"smooth"}); }
+  else showResult();
+}
+
+function showResult(){
+  var R = evaluate();
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+  window.scrollTo({top:0, behavior:"smooth"});
+
+  var rank = {ok:0, warn:1, no:5, wait:9};
+  var access = {}; PATHS.forEach(function(p){ access[p.id] = rank[R[p.id].status] + R[p.id].prep; });
+  var minAccess = Math.min.apply(null, PATHS.map(function(p){ return access[p.id]; }));
+
+  var open = function(id){ return R[id].status !== "no"; };
+  var pick = function(list){ return list.filter(open); };
+  var gerFit = {A: R.A.status !== "no" || (a.german === "B2" || a.german === "C"), U: a.german === "C", W: a.german === "B2" || a.german === "C", S: a.german !== "A", D: true};
+  var gerTxt = {A:"нужен B2", U:"нужен C1", W:"на практике B2", S:"зависит от курса", D:"можно с нуля"};
+  var crit = [
+    {n:"Подходит при твоём немецком", v:function(id){ return (gerFit[id] ? "да, " : "нет, ") + gerTxt[id]; }, win:["A","U","W","S","D"].filter(function(id){ return gerFit[id]; }).length === 5 ? [] : ["A","U","W","S","D"].filter(function(id){ return gerFit[id] && id !== "S"; })},
+    {n:"Доступ для тебя сейчас", v:function(id){ return STATUS_TXT[R[id].status] + (R[id].prep ? ", подготовка ~" + yrs(R[id].prep) : ""); }, win:PATHS.filter(function(p){ return access[p.id] === minAccess; }).map(function(p){ return p.id; })},
+    {n:"Стоимость для тебя", v:function(id){ return R[id].costShort; }, win: open("A") ? ["A"] : (a.jc === "yes" ? ["S"] : [])},
+    {n:"Доход во время учёбы", v:function(id){ return R[id].income; }, win: open("A") ? ["A"] : ["D"]},
+    {n:"Когда начнёшь практиковать", v:function(id){ return R[id].practiceShort; }, win: open("A") ? pick(a.prof === "de" ? ["A","W"] : ["A"]) : pick(["D","W"]).filter(function(id){ return id === "D" || a.prof === "de"; })},
+    {n:"Сертификат через", v:function(id){ return R[id].certShort; }, win:["S"]},
+    {n:"Признанная профессия", v:function(id){ return R[id].recognized; }, win:pick(["A","U","W"])},
+    {n:"Формат", v:function(id){ return {A:"очно: компания и Berufsschule",U:"в основном очно",W:"очно или дистанционно",S:"очно или онлайн",D:"онлайн"}[id]; }, win:[]},
+    {n:"Медианная зарплата после", v:function(id){ return R[id].afterShort; }, win: open("U") ? ["U"] : pick(["A"])}
+  ];
+
+  var wins = {A:0,U:0,W:0,S:0,D:0};
+  var scored = crit.filter(function(c){ return c.win.length; }).length;
+  crit.forEach(function(c){ c.win.forEach(function(id){ wins[id]++; }); });
+  var top = open("A") ? "A" : "D";
+  PATHS.forEach(function(p){ if (wins[p.id] > wins[top]) top = p.id; });
+  var topName = PATHS.filter(function(p){ return p.id === top; })[0].name;
+
+  document.getElementById("rTitle").textContent = "Для тебя выигрывает " + topName + ": " + wins[top] + " из " + scored + " критериев";
+  var lead = top === "D"
+    ? "Онлайн-Ausbildung в Академии System Consulting: немецкий не нужен, сертификат через 1 год, практика с людьми уже во время курса." + (open("A") ? "" : " Классическая Ausbildung откроется, когда твой немецкий дойдёт до B2.")
+    : top === "A"
+    ? "Ты учишься бесплатно, получаешь зарплату с первого месяца, работаешь в настоящей компании и через " + yrs(R.A.prep + 3) + " держишь в руках профессию, которую понимает любой работодатель в Германии."
+    : "По твоим ответам этот путь закрывает больше критериев. Ausbildung при этом остаётся самым дешёвым входом в признанную профессию.";
+  if (R.U.status !== "no") lead += " Университет даёт более высокую медианную зарплату, и за это ты платишь годами без дохода.";
+  document.getElementById("rLead").textContent = lead;
+
+  var head = '<thead><tr><th></th>' + PATHS.map(function(p){ return '<th class="' + (p.id === top ? 'a' : '') + '">' + pathName(p) + (p.sub ? '<span class="sub">' + p.sub + '</span>' : '') + '</th>'; }).join("") + '</tr></thead>';
+  var body = '<tbody>' + crit.map(function(c){
+    return '<tr><td>' + c.n + '</td>' + PATHS.map(function(p){ return '<td class="' + (c.win.indexOf(p.id) > -1 ? 'win' : '') + '">' + c.v(p.id) + '</td>'; }).join("") + '</tr>';
+  }).join("") + '</tbody>';
+  document.getElementById("rTable").innerHTML = head + body;
+  document.getElementById("reqResult").innerHTML = reqTableHTML();
+
+  var azubiEarn = AVG_AZUBI * 36;
+  var uniMonths = Math.round((R.U.prep + 3.5) * 12);
+  var uniCost = LIVING * uniMonths;
+  var m = !open("A")
+    ? '<div class="plus"><span class="muted">Онлайн-Ausbildung: оплата частями</span><b>от 250 € в месяц</b><span class="muted">40% студентов начинают практиковать до окончания курса</span></div>'
+    : '<div class="plus"><span class="muted">Ausbildung: за 3 года учёбы ты заработаешь</span><b>≈ ' + eur(azubiEarn) + '</b><span class="muted">брутто, по средней тарифной ставке ' + eur(AVG_AZUBI) + ' в месяц</span></div>';
+  if (R.U.status !== "no") m += '<div><span class="muted">Университет: жизнь до диплома за свой счёт</span><b>≈ ' + eur(uniCost) + '</b><span class="muted">' + uniMonths + ' мес. по ' + eur(LIVING) + ', официальный ориентир для студентов</span></div>';
+  else m += '<div><span class="muted">Университет для тебя сейчас</span><b>закрыт</b><span class="muted">Ausbildung и 3 года работы по профессии открывают дорогу в вуз без Abitur</span></div>';
+  document.getElementById("rMoney").innerHTML = m;
+
+  var todo = !open("A") ? [] : R.A.req.filter(function(x){ return x.k === "warn"; }).map(function(x){ return '<li>' + x.t + '</li>'; });
+  var goalNote = {
+    stable:"Ты выбрал стабильность. Ausbildung заканчивается государственным экзаменом, и такую профессию признают по всей стране.",
+    max:"Ты выбрал максимальный доход. Ausbildung закрывает первые годы без долгов, а дальше открывает дорогу к Meister и даже в вуз.",
+    lead:"Ты хочешь свою практику. Консультировать клиентов можно после года обучения в Академии System Consulting. Для лечения психических расстройств в Германии нужно отдельное разрешение: Heilpraktiker für Psychotherapie или Approbation.",
+    fast:"Тебе важна скорость. Schulung быстрее даёт сертификат, а Ausbildung быстрее даёт настоящую работу в компании: с первого месяца."
+  }[a.goal];
+  if (top === "D") goalNote = {
+    stable:"Ты выбрал стабильность. Онлайн-Ausbildung даёт сертификат и практику уже через год, без ожидания, пока подтянется немецкий.",
+    max:"Ты выбрал максимальный доход. Практика во время обучения позволяет зарабатывать уже в процессе: 70% студентов получают первых платных клиентов к 8-му модулю.",
+    lead:goalNote,
+    fast:"Тебе важна скорость. Онлайн-Ausbildung даёт сертификат через год и практику с людьми уже во время курса."
+  }[a.goal];
+  document.getElementById("rTodo").innerHTML = '<h2>Что учесть тебе</h2><p style="margin-bottom:12px">' + goalNote + '</p>' + (todo.length ? '<ul>' + todo.join("") + '</ul>' : '');
+
+  var spot = document.getElementById("rSpot");
+  if (a.dir !== "care"){
+    spot.innerHTML = '<h2>Если ты хочешь практиковать уже через год</h2>' +
+      '<p>Для консультирования в теме денег есть короткий путь: онлайн-Ausbildung ДРНК «Денежные расстановки на картах» в Академии System Consulting.</p>' +
+      '<ul><li>Сертификат через 1 год. Для сравнения: Ausbildung займёт у тебя ' + yrs(R.A.prep + 3) + ', университет ' + yrs(R.U.prep + 3.5) + '.</li>' +
+      '<li>Диплом психолога и опыт консультирования для старта не нужны. Немецкий тоже: обучение на русском, при необходимости с куратором на украинском.</li>' +
+      '<li>По итогам 7 потоков: 40% студентов начинают практиковать до окончания курса, 70% получают первых платных клиентов к 8-му модулю, 17% окупают обучение ещё до конца программы.</li>' +
+      '<li>Курс допущен ZFU. Новый поток стартует 27 октября, оплата частями от 250 € в месяц.</li></ul>' +
+      '<p class="fine">Сертификат Академии System Consulting даёт право консультировать в рамках изученных техник. Это не государственный Berufsabschluss. Для лечения психических расстройств в Германии нужно отдельное разрешение.</p>';
+    spot.classList.remove("hidden");
+  } else spot.classList.add("hidden");
+
+  document.getElementById("cta").href = DIAGNOSTIC_URL;
+}
+
+document.getElementById("reqIntro").innerHTML = reqTableHTML();
+document.getElementById("start").addEventListener("click", function(){
+  document.getElementById("intro").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  renderQ();
+});
+document.getElementById("back").addEventListener("click", function(){
+  if (qi > 0){ qi--; renderQ(); }
+});
+document.getElementById("again").addEventListener("click", function(){
+  a = {}; qi = 0; prevHTML = {};
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  renderQ();
+});
+</script>
+</body>
+</html>
